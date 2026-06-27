@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useLang } from '@/contexts/LangContext'
+import { AdUnit, AD_SLOTS } from '@/components/AdUnit'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
@@ -183,6 +184,9 @@ function HomePage() {
           />
         </div>
       </section>
+
+      {/* In-content ad */}
+      <AdUnit slot={AD_SLOTS.inContent} style={{ marginTop: 0 }} />
 
       {/* CTA Banner */}
       <section style={{

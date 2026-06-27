@@ -9,11 +9,31 @@ export const Route = createFileRoute('/contact')({
 function ContactPage() {
   const { lang, t } = useLang()
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState(false)
   const [form, setForm] = useState({ name: '', email: '', message: '' })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSent(true)
+    setSending(true)
+    setError(false)
+    try {
+      const body = new URLSearchParams(
+        new FormData(e.currentTarget) as unknown as Record<string, string>,
+      ).toString()
+      // POST to the static skeleton, not '/', so the SSR catch-all doesn't intercept it.
+      const res = await fetch('/__forms.html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
+      })
+      if (!res.ok) throw new Error('Submission failed')
+      setSent(true)
+    } catch {
+      setError(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   const inputStyle: React.CSSProperties = {
@@ -119,13 +139,27 @@ function ContactPage() {
                 {t('contact.sent')}
               </div>
             ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                onSubmit={handleSubmit}
+                style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <p hidden>
+                  <label>
+                    Don't fill this out: <input name="bot-field" />
+                  </label>
+                </p>
                 <div>
                   <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--ink-mid)', marginBottom: 6 }}>
                     {t('contact.name')}
                   </label>
                   <input
                     type="text"
+                    name="name"
                     required
                     value={form.name}
                     onChange={e => setForm({ ...form, name: e.target.value })}
@@ -140,6 +174,7 @@ function ContactPage() {
                   </label>
                   <input
                     type="email"
+                    name="email"
                     required
                     value={form.email}
                     onChange={e => setForm({ ...form, email: e.target.value })}
@@ -153,6 +188,7 @@ function ContactPage() {
                     {t('contact.message')}
                   </label>
                   <textarea
+                    name="message"
                     required
                     rows={5}
                     value={form.message}
@@ -162,8 +198,16 @@ function ContactPage() {
                     onBlur={e => (e.target as HTMLTextAreaElement).style.borderColor = 'rgba(44,31,122,0.15)'}
                   />
                 </div>
+                {error && (
+                  <div style={{ color: 'var(--ruby)', fontSize: 14, fontWeight: 600 }}>
+                    {lang === 'en'
+                      ? 'Something went wrong. Please try again.'
+                      : 'Khalad ayaa dhacay. Fadlan mar kale isku day.'}
+                  </div>
+                )}
                 <button
                   type="submit"
+                  disabled={sending}
                   style={{
                     background: 'var(--indigo)',
                     color: '#fff',
@@ -172,19 +216,24 @@ function ContactPage() {
                     padding: '14px',
                     fontSize: 16,
                     fontWeight: 700,
-                    cursor: 'pointer',
+                    cursor: sending ? 'not-allowed' : 'pointer',
+                    opacity: sending ? 0.7 : 1,
                     transition: 'opacity 0.2s, transform 0.2s',
                   }}
                   onMouseEnter={e => {
+                    if (sending) return
                     (e.currentTarget as HTMLElement).style.opacity = '0.88'
                     ;(e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'
                   }}
                   onMouseLeave={e => {
+                    if (sending) return
                     (e.currentTarget as HTMLElement).style.opacity = '1'
                     ;(e.currentTarget as HTMLElement).style.transform = 'none'
                   }}
                 >
-                  {t('contact.send')}
+                  {sending
+                    ? (lang === 'en' ? 'Sending…' : 'Waa la dirayaa…')
+                    : t('contact.send')}
                 </button>
               </form>
             )}

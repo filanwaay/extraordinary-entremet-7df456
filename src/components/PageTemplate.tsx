@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { useLang } from '@/contexts/LangContext'
+import { AdUnit, AD_SLOTS } from '@/components/AdUnit'
 
 interface SubMenuItem {
   label: string
@@ -139,6 +140,7 @@ export function PageTemplate({
         <div className="prose-content">
           {children}
         </div>
+        <AdUnit slot={AD_SLOTS.inContent} />
       </div>
     </div>
   )
