@@ -1,6 +1,7 @@
 import { HeadContent, Outlet, Scripts, createRootRoute, Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { LangProvider, useLang } from '@/contexts/LangContext'
+import { CookieConsent } from '@/components/CookieConsent'
 import '../styles.css'
 
 export const Route = createRootRoute({
@@ -395,10 +396,25 @@ function Footer() {
           </div>
         </div>
 
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 16 }}>
           <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)' }}>
             © {new Date().getFullYear()} Filanwaa. {t('footer.rights')}
           </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 18 }}>
+            {[
+              { href: '/privacy', label: t('legal.privacy') },
+              { href: '/terms', label: t('legal.terms') },
+              { href: '/cookies', label: t('legal.cookies') },
+              { href: '/disclaimer', label: t('legal.disclaimer') },
+            ].map(item => (
+              <Link key={item.href} to={item.href} style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', textDecoration: 'none', transition: 'color 0.15s' }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.9)'}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.5)'}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
@@ -440,6 +456,7 @@ export default function RootLayout() {
       <NavBar />
       <Outlet />
       <Footer />
+      <CookieConsent />
     </>
   )
 }

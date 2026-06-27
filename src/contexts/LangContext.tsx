@@ -125,6 +125,12 @@ const translations: Record<string, { en: string; so: string }> = {
   'footer.rights': { en: 'All rights reserved.', so: 'Dhammaan xuquuqaha way xidantahay.' },
   'footer.tagline': { en: 'Knowledge · Faith · Culture', so: 'Cilmi · Diin · Dhaqan' },
 
+  // Legal / policy links
+  'legal.privacy': { en: 'Privacy Policy', so: 'Siyaasadda Asturnaanta' },
+  'legal.terms': { en: 'Terms of Service', so: 'Shuruudaha Adeegga' },
+  'legal.cookies': { en: 'Cookie Policy', so: 'Siyaasadda Cookies-ka' },
+  'legal.disclaimer': { en: 'Disclaimer', so: 'Ka-fogaansho' },
+
   // IT Pages
   'it.intro': { en: 'Programming Language Guide', so: 'Hagaha Luuqadaha Barnaamijyada' },
   'it.learnmore': { en: 'Learn More', so: 'Wax Dheeraad Ah Baaro' },
