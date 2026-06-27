@@ -10,6 +10,7 @@ export const Route = createRootRoute({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'Filanwaa — Knowledge · Faith · Culture' },
       { name: 'description', content: 'Filanwaa: IT, Islamic Religion, and Somali Literature — bilingual knowledge platform' },
+      { name: 'google-adsense-account', content: 'ca-pub-8273218830552772' },
     ],
     links: [
       { rel: 'icon', type: 'image/svg+xml', href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%232c1f7a'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' font-weight='bold' fill='%23c9952a' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E" },
@@ -24,8 +25,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8273218830552772"
-     crossorigin="anonymous"></script>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8273218830552772"
+          crossOrigin="anonymous"
+        ></script>
       </head>
       <body>
         <LangProvider>
