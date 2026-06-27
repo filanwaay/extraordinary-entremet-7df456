@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://filanwaa.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://filanwaa.com/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://filanwaa.com/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://filanwaa.com/it/python</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/it/css</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/it/java</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/it/sql</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/it/php</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/diinta/salaada</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/diinta/soonka</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/diinta/zakada</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/diinta/xajka</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/suugaanta/maahmaahyo</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/suugaanta/xikmado</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/suugaanta/shekooyin</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/suugaanta/gabayo</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/suugaanta/heeso</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://filanwaa.com/privacy</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://filanwaa.com/terms</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://filanwaa.com/cookies</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://filanwaa.com/disclaimer</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+</urlset>
